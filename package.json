@@ -1,0 +1,14 @@
+{
+  "name": "smarttt",
+  "version": "0.0.1",
+  "description": "Smart Typing Tutor",
+  "author": "Peter Borkuti",
+
+  "devDependencies": {
+    "chai": "*",
+    "mocha": "*"
+  },
+  "scripts": {
+    "test" : "mocha"
+  }
+}
