@@ -1,20 +1,29 @@
-define(['js/config'], function(config) {
+define(['js/config', 'js/char'], function(config, char) {
     var boundingBoxId = config.dom.outputId;
 
                 var chars = [];
                 var charIndex = -1;
                 var bBox = document.getElementById(boundingBoxId);
 
-                var add = function (style, chr) {
+                var add = function (chr) {
                     var id = 'char' + chars.length;
-                    var t = '<span id="' + id + '"></span>';
-                    var obj = document.createElement('SPAN');
-                    obj.innerText = chr;
-                    obj.style = style;
-                    obj.id = id;
-                    chars.push({ 'obj': obj, 'style': style, 'char': chr});
+                    var obj = char(id, chr);
+                    chars.push(obj);
                     bBox.appendChild(obj);
                 };
+
+                var pressedChar = function(prevChar, char, prevTime, time) {
+                    charIndex++;
+                    c = chars[charIndex];
+                    if (char === c.innerText) {
+                        c.good();
+                    }
+                    else {
+                        c.missed();
+                    }
+                    (chars[charIndex + 1]).actual();
+
+                }
 
                 var get = function(index) {
                     if (index >= 0 && index < chars.length) {
@@ -27,25 +36,46 @@ define(['js/config'], function(config) {
                     if (index >= 0 && index < chars.length) {
                         var c = chars[index];
                         c['style'] = style;
-                        c['char'] = chr;
-                        c['obj'].innerText = chr;
+                        if (chr) {
+                            c['char'] = chr;
+                            c['obj'].innerText = chr;
+                        };
                         c['obj'].style = style;
                     }
                 };
 
-                var circularSet = function(style, chr) {
-                    charIndex++;
-                    if (charIndex >= chars.length) {
-                        charIndex = 0;
-                    };
-                    set(charIndex, style, chr);
+
+                var addBunch = function(bunch) {
+                    var endChar = ' ';
+
+                    bunch.forEach(function(e) {
+                        e.forEach(function(ee) {
+                            add(ee);
+                            if ((chars.length % config.lineLength) === 0) {
+                                endChar = "\n";
+                            };
+                        });
+                    });
+
+                    add(endChar);
                 };
+
+                var clear = function() {
+                    chars = [];
+                    charIndex = -1;
+                    bBox.innerHTML = '';
+                }
+
+
 
                 return {
                     'add' : add,
                     'get' : get,
                     'set' : set,
-                    'circularSet' : circularSet
+                    'addBunch' : addBunch,
+                    'clear' : clear,
+                    'getIndex' : function() { return charIndex; },
+                    'pressedChar': pressedChar
                 }
 
 });
