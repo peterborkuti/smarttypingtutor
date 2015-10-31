@@ -15,7 +15,7 @@ describe('char', function() {
 
   //Needs to load module before any tests
   before(function(done) {
-      requirejs(['js/char'],
+      requirejs(['modules/char'],
         function(mod) {
             char = mod;
 

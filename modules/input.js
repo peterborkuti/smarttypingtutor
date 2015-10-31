@@ -1,24 +1,25 @@
-define(['js/config', 'js/output', 'js/generator'], function(config, output, generator){
+define(['js/config', 'modules/output', 'modules/generator'], function(config, output, generator){
 
     var inp = document.getElementById(config.dom.inputId);
     var prevChar = '';
     var prevTime;
+    var prevGood = false;
 
     var listenerKeypress = function(e) {
         var key = e.keyCode ? e.keyCode : e.which;
         var char = String.fromCharCode(key);
         var time = new Date().getTime();
 
-        output.pressedChar(prevChar, char, prevTime, time);
+        var good = output.pressedChar(char);
+        generator.pressedChar(prevGood, good, prevChar, char, time - prevTime);
         prevChar = char;
         prevTime = time;
+        prevGood = good;
 
         var index = output.getIndex();
-        if ((index > 0) && (index % config.bunchLength) === 0) {
+        if ((index > 0) && (index % (config.bunchLength + 1)) === 0) {
             output.addBunch(generator.getBunch());
         }
-
-        console.log(char, new Date().getTime());
     }
 
     var start = function(addBunchFn, pressedCharFn) {

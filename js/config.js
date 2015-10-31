@@ -6,7 +6,8 @@ define(function(){
              /** DOM id of output element */
             'outputId': 'out'
         },
-        'lineLength': 30,
-        'bunchLength' : 6
+        'lineLength': 6 * 10 + 9 + 1,
+        'bunchLength' : 6,
+        'letters' : 'fjdkslaé'
     }
 });

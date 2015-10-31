@@ -9,19 +9,22 @@ define(function() {
     var add = function(char) {
        //if this char is already added, exiting
        if (chars.indexOf(char) !== -1) {
-        return;
+        return [];
        }
 
        //adds the new character
        chars.push(char);
 
        //adds the pairs based on this new character and the previouses
+       var pairsIndex = pairs.length;
        chars.forEach(function(e){
             pairs.push(e + char);
             if (e !== char) {
                 pairs.push(char + e);
             }
        });
+
+       return pairs.slice(pairsIndex);
     };
 
     var get = function() {
@@ -34,6 +37,11 @@ define(function() {
         return chars.slice();
     }
 
+    var clear = function() {
+        pairs = [];
+        chars = [];
+    }
+
     return /** @alias module:pairs */ {
         /** gets the character pairs in an array */
         'get': get,
@@ -42,7 +50,9 @@ define(function() {
         /** alias for get */
         'getPairs': get,
         /** gets the characters in an array which were added */
-        'getChars': getChars
+        'getChars': getChars,
+        /** deletes all the stored pairs and characters "reset button" */
+        'clear' : clear
     }
 
 });

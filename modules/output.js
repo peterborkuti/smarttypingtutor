@@ -1,4 +1,4 @@
-define(['js/config', 'js/char'], function(config, char) {
+define(['js/config', 'modules/char'], function(config, char) {
     var boundingBoxId = config.dom.outputId;
 
                 var chars = [];
@@ -12,16 +12,19 @@ define(['js/config', 'js/char'], function(config, char) {
                     bBox.appendChild(obj);
                 };
 
-                var pressedChar = function(prevChar, char, prevTime, time) {
+                var pressedChar = function(char) {
                     charIndex++;
                     c = chars[charIndex];
-                    if (char === c.innerText) {
+                    var good = (char === c.innerText);
+                    if (good) {
                         c.good();
                     }
                     else {
                         c.missed();
                     }
                     (chars[charIndex + 1]).actual();
+
+                    return good;
 
                 }
 
