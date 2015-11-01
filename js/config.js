@@ -8,6 +8,9 @@ define(function(){
         },
         'lineLength': 6 * 10 + 9 + 1,
         'bunchLength' : 6,
-        'letters' : 'fjdkslaé'
+        'letters' : 'fjdkslaégh',
+        'blink' : {
+            'delay' : 500 /** cursor blink delay in millisecs */
+        }
     }
 });

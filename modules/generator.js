@@ -1,5 +1,5 @@
 define(['js/config', 'modules/pairs', 'modules/utils'], function(config, pairs, utils) {
-    var goalMillis = 999; // 180 character/minute
+    var goalMillis = 666; // 180 character/minute
     var maxMillis = 10 * goalMillis;
     var letters = config.letters;
     //sample number for moving median
@@ -82,15 +82,16 @@ define(['js/config', 'modules/pairs', 'modules/utils'], function(config, pairs, 
                 //let's forget the unnecessary old ones
                 var copyTPair = tPair.slice(0, sampleNumber);
                 timedPairs[pair] = copyTPair;
-                tPair = copyTPair.slice();
 
                 //Because here we have enough data for calculating
                 //the moving median, let's calculate it!
 
+                //sort should not modify the stored timedPairs
+                var sorted = copyTPair.slice().sort();
+
                 //simple moving median is the value in the middle in a sorted
                 //array. See: https://en.wikipedia.org/wiki/Moving_average
-                var sorted = tPair.sort();
-                mmTimes[pair] = tPair[Math.floor(sampleNumber / 2)];
+                mmTimes[pair] = sorted[Math.floor(sampleNumber / 2)];
                 console.log("mmTimes[pair]",mmTimes[pair]);
             }
     }

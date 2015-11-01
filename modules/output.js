@@ -8,6 +8,9 @@ define(['js/config', 'modules/char'], function(config, char) {
                 var add = function (chr) {
                     var id = 'char' + chars.length;
                     var obj = char(id, chr);
+                    if (chars.length === 0) {
+                        obj.className = "actual";
+                    }
                     chars.push(obj);
                     bBox.appendChild(obj);
                 };
