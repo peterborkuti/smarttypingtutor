@@ -1,7 +1,7 @@
 define(['js/config', 'modules/pairs', 'modules/utils'], function(config, pairs, utils) {
-    var goalMillis = 666; // 180 character/minute
-    var maxMillis = 10 * goalMillis;
-    var letters = config.letters;
+    var goalMillis = config.generator.goalMillis || 666; // 180 character/minute
+    var maxMillis = config.generator.maxMillis || 10 * goalMillis;
+    var letters = config.generator.letters;
     //sample number for moving median
     var sampleNumber = 5;
     var timedPairs = {};
