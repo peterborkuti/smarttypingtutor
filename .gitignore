@@ -1,1 +1,5 @@
 node_modules*
+*.tg
+*.tgz
+*.zip
+*.log

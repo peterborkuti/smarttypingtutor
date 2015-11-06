@@ -1,0 +1,9 @@
+# Ignore everything in this directory
+# This directory will contain the packed project
+# run :
+# npm run-script dist
+# from the project root directory
+*
+# Except this file
+!.gitignore
+!README.md

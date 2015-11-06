@@ -9,6 +9,7 @@
     "mocha": "*"
   },
   "scripts": {
-    "test" : "mocha"
+    "test" : "mocha",
+    "dist" : "tar -cf dist/dist.tg html lib js modules"
   }
 }
