@@ -1,4 +1,4 @@
-define(['js/config', 'modules/char'], function(config, char) {
+define(['config', 'modules/char'], function(config, char) {
     var boundingBoxId = config.dom.outputId;
 
                 var chars = [];

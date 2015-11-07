@@ -1,4 +1,4 @@
-define(['js/config'], function(config) {
+define(['config'], function(config) {
     var timer;
     var delay = config.blink.delay;
 

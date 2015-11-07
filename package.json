@@ -10,6 +10,6 @@
   },
   "scripts": {
     "test" : "mocha",
-    "dist" : "tar -cf dist/dist.tg html lib js modules"
+    "dist" : "tar -cf dist/dist.tg web"
   }
 }

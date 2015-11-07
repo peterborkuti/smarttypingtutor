@@ -1,4 +1,4 @@
-define(['js/config', 'modules/pairs', 'modules/utils'], function(config, pairs, utils) {
+define(['config', 'modules/pairs', 'modules/utils'], function(config, pairs, utils) {
     var goalMillis = config.generator.goalMillis || 666; // 180 character/minute
     var maxMillis = config.generator.maxMillis || 10 * goalMillis;
     var letters = config.generator.letters;

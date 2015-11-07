@@ -1,6 +1,8 @@
+/*
 requirejs.config({
-    baseUrl: "/"
+    baseUrl: ".."
 });
+*/
 
 require(["modules/input", "modules/blink"], function (input, blink) {
     input.start();

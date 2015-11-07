@@ -3,12 +3,6 @@
 //How to use requirejs(for using AMDs) and mocha:
 //http://stackoverflow.com/questions/20473614/mocha-requirejs-amd-testing
 
-requirejs.config({
-    baseUrl: '/',
-    nodeRequire: require
-});
-
-
 describe('Pairs', function() {
   var pairs;
   var assert = chai.assert;

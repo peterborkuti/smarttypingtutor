@@ -1,4 +1,4 @@
-define(['js/config', 'modules/output', 'modules/generator'], function(config, output, generator){
+define(['config', 'modules/output', 'modules/generator'], function(config, output, generator){
 
     var inp = document.getElementById(config.dom.inputId);
     var prevChar = '';
