@@ -1,15 +1,15 @@
-define(['js/config', 'modules/char'], function(config, char) {
-    var boundingBoxId = config.dom.outputId;
+define(['config', 'modules/char', 'modules/utils'], function(config, char, utils) {
+    var boundingBoxClass = config.dom.outputClass;
 
                 var chars = [];
                 var charIndex = -1;
-                var bBox = document.getElementById(boundingBoxId);
+                var bBox = utils.getElement(boundingBoxClass);
 
                 var add = function (chr) {
                     var id = 'char' + chars.length;
                     var obj = char(id, chr);
                     if (chars.length === 0) {
-                        obj.className = "actual";
+                        obj.className = 'actual';
                     }
                     chars.push(obj);
                     bBox.appendChild(obj);
