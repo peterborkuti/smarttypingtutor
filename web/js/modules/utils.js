@@ -18,9 +18,47 @@ var shuffle = function(array, randomFunc) {
   }
 }
 
+/**
+ * Creates a new element with the given properties or 'SPAN'
+ *
+ *
+ */
+var createElement = function(elementType, className, id, innerText) {
+    var obj = document.createElement(elementType || 'SPAN');
+    obj.innerText = innerText || '';
+    obj.className = className || '';
+    if (id) {
+        obj.id = id;
+    }
+
+    return obj;
+}
+
+/**
+ * Gets or creates a new element with the given classname
+ * If there is no such an element, create a DIV with the given class
+ * and appends it to the BODY
+ *
+ */
+var getElement = function(className) {
+  var elements = document.getElementsByClassName(className);
+
+  if (!elements || elements.length === 0) {
+      console.err('getElement: element does not exist, so create a div with class ' + className);
+      var div = createElement('DIV', className);
+      document.getElementsByTagname('BODY')[0].appendChild(div);
+
+      return div;
+  }
+
+  return elements[0];
+}
+
 return {
 
-    'shuffle' : shuffle
+    'shuffle' : shuffle,
+    'getElement' : getElement,
+    'createElement' : createElement
 
 }
 

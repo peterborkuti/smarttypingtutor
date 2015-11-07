@@ -1,26 +1,27 @@
-define(['config'], function(config) {
+define(['config', 'modules/utils'], function(config, utils) {
+    var CSS_CLASS_FRAGMENT_BLINK = 'blink';
+    var CSS_CLASS_FRAGMENT_ON = 'On';
+    var CSS_CLASS_FRAGMENT_OFF = 'Off';
+    var CSS_CLASS_BLINKON = CSS_CLASS_FRAGMENT_BLINK + CSS_CLASS_FRAGMENT_ON;
+    var CSS_CLASS_BLINKOFF = CSS_CLASS_FRAGMENT_BLINK + CSS_CLASS_FRAGMENT_OFF;
+    var CSS_CLASS_ACTUAL_CHAR = 'actual';
+
     var timer;
     var delay = config.blink.delay;
 
     var blink = function() {
-        var elements = document.getElementsByClassName('actual');
-
-        if (!elements || elements.length === 0) {
-            return;
-        }
-
-        var cursor = elements[0];
+        var cursor = utils.getElement(CSS_CLASS_ACTUAL_CHAR);
 
         var classes = cursor.className;
 
-        if (classes.indexOf('blinkOff') !== -1) {
-            classes = classes.replace('Off', 'On');
+        if (classes.indexOf(CSS_CLASS_BLINKON) !== -1) {
+            classes = classes.replace(CSS_CLASS_FRAGMENT_OFF, CSS_CLASS_FRAGMENT_ON);
         }
-        else if (classes.indexOf('blinkOn') !== -1) {
-            classes = classes.replace('On', 'Off');
+        else if (classes.indexOf(CSS_CLASS_BLINKOFF) !== -1) {
+            classes = classes.replace(CSS_CLASS_FRAGMENT_ON, CSS_CLASS_FRAGMENT_OFF);
         }
         else {
-            classes += ' blinkOn';
+            classes += ' ' + CSS_CLASS_BLINKON;
         }
 
         cursor.className = classes;

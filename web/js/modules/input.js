@@ -1,6 +1,6 @@
-define(['config', 'modules/output', 'modules/generator'], function(config, output, generator){
+define(['config', 'modules/output', 'modules/generator', 'modules/utils'], function(config, output, generator, utils){
 
-    var inp = document.getElementById(config.dom.inputId);
+    var inp = utils.getElement(config.dom.inputClass);
     var prevChar = '';
     var prevTime;
     var prevGood = false;
