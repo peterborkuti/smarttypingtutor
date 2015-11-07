@@ -15,10 +15,10 @@ define(['config', 'modules/utils'], function(config, utils) {
         var classes = cursor.className;
 
         if (classes.indexOf(CSS_CLASS_BLINKON) !== -1) {
-            classes = classes.replace(CSS_CLASS_FRAGMENT_OFF, CSS_CLASS_FRAGMENT_ON);
+            classes = classes.replace(CSS_CLASS_FRAGMENT_ON, CSS_CLASS_FRAGMENT_OFF);
         }
         else if (classes.indexOf(CSS_CLASS_BLINKOFF) !== -1) {
-            classes = classes.replace(CSS_CLASS_FRAGMENT_ON, CSS_CLASS_FRAGMENT_OFF);
+            classes = classes.replace(CSS_CLASS_FRAGMENT_OFF, CSS_CLASS_FRAGMENT_ON);
         }
         else {
             classes += ' ' + CSS_CLASS_BLINKON;

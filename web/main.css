@@ -1,13 +1,16 @@
 /* a character which was typed in well */
 .good       {color: green; background-color: white}
-* a character which was typed badly */
+
+/* a character which was typed badly */
 .missed     {color: red; background-color: white}
+
 /* cursor which shows the caracter to type in */
 /* these two classes are changing with a timer in bliker.js */
 .blinkOn    {color: yellow; background-color: black}
 .blinkOff   {color: black; background-color: yellow}
 
 /* here are listed the characters to type in */
-div.out     {font-wight: bold; font-family: monospace; width: 49%}
+.out     {font-weight: bold; font-family: monospace; width: 49%}
+
 /* here are the characters typed in */
-div.inp     {font-family: monospace; width: 49%}
+.inp     {font-family: monospace; width: 49%}
